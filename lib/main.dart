@@ -80,7 +80,7 @@ class MyFlutterState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffd7b516),
+      backgroundColor: Colors.brown,
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -90,13 +90,13 @@ class MyFlutterState extends State<MyFlutterApp> {
             alignment: Alignment.topLeft,
             children: [
               Align(
-                alignment: const Alignment(0.0, 0.0),
+                alignment: const Alignment(0.0, -0.4),
                 child: MaterialButton(
                   onPressed: () {
                     buttonHandler();
                   },
                   color: const Color(0xff019fa1),
-                  elevation: 0,
+                  elevation: 50,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                   ),
@@ -116,15 +116,16 @@ class MyFlutterState extends State<MyFlutterApp> {
                 ),
               ),
               Align(
-                alignment: const Alignment(0.0, -0.3),
+                alignment: const Alignment(0.0, -0.8),
                 child: Text(
                   description,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.clip,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w200,
                     fontStyle: FontStyle.normal,
                     fontSize: 30,
+                    letterSpacing: 5,
                     color: Color(0xffffffff),
                   ),
                 ),
