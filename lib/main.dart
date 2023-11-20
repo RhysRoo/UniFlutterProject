@@ -90,7 +90,7 @@ class MyFlutterState extends State<MyFlutterApp> {
             alignment: Alignment.topLeft,
             children: [
               Align(
-                alignment: const Alignment(0.0, 1.0),
+                alignment: const Alignment(0.0, 0.0),
                 child: MaterialButton(
                   onPressed: () {
                     buttonHandler();
@@ -124,7 +124,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
-                    fontSize: 56,
+                    fontSize: 30,
                     color: Color(0xffffffff),
                   ),
                 ),
