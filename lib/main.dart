@@ -109,7 +109,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                     "Click Here",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.normal,
                     ),
                   ),
@@ -130,6 +130,32 @@ class MyFlutterState extends State<MyFlutterApp> {
                   ),
                 ),
               ),
+              Align(
+                alignment: const Alignment(0.0, 1.0),
+                child: Container(
+                  width: 430,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    color: Colors.brown[300],
+                    borderRadius: const BorderRadius.horizontal(),
+                  ),
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: const Alignment(-0.8, 0.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                          ),
+                          child: const Text("Button"),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
