@@ -142,14 +142,14 @@ class MyFlutterState extends State<MyFlutterApp> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: const Alignment(-0.8, 0.0),
+                        alignment: const Alignment(-0.8, -0.2),
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 20),
                           ),
-                          child: const Text("Button"),
+                          child: const Text("PROFILE"),
                         ),
                       )
                     ],
