@@ -90,7 +90,7 @@ class MyFlutterState extends State<MyFlutterApp> {
             alignment: Alignment.topLeft,
             children: [
               Align(
-                alignment: const Alignment(0.0, -0.4),
+                alignment: const Alignment(0.0, -0.2),
                 child: MaterialButton(
                   onPressed: () {
                     buttonHandler();
@@ -117,18 +117,28 @@ class MyFlutterState extends State<MyFlutterApp> {
               ),
               Align(
                 alignment: const Alignment(0.0, -0.8),
-                child: Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.clip,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w200,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 30,
-                    letterSpacing: 5,
-                    color: Color(0xffffffff),
-                  ),
-                ),
+                child: Container(
+                    width: 400,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.horizontal()),
+                    child: Stack(
+                      children: [
+                        Text(
+                          description,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.clip,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w200,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            letterSpacing: 5,
+                            color: Color(0xffffffff),
+                          ),
+                        ),
+                      ],
+                    )),
               ),
               Align(
                 alignment: const Alignment(0.0, 1.0),
