@@ -116,10 +116,10 @@ class MyFlutterState extends State<MyFlutterApp> {
                 ),
               ),
               Align(
-                alignment: const Alignment(0.0, -0.8),
+                alignment: const Alignment(0.0, -0.6),
                 child: Container(
                     width: 400,
-                    height: 200,
+                    height: 100,
                     decoration: const BoxDecoration(
                         color: Colors.deepPurple,
                         borderRadius: BorderRadius.horizontal()),
@@ -130,10 +130,10 @@ class MyFlutterState extends State<MyFlutterApp> {
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.clip,
                           style: const TextStyle(
-                            fontWeight: FontWeight.w200,
+                            fontWeight: FontWeight.w300,
                             fontStyle: FontStyle.normal,
-                            fontSize: 30,
-                            letterSpacing: 5,
+                            fontSize: 20,
+                            letterSpacing: 1,
                             color: Color(0xffffffff),
                           ),
                         ),
@@ -144,7 +144,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                 alignment: const Alignment(0.0, 1.0),
                 child: Container(
                   width: 430,
-                  height: 90,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: Colors.brown[300],
                     borderRadius: const BorderRadius.horizontal(),
@@ -161,11 +161,33 @@ class MyFlutterState extends State<MyFlutterApp> {
                           ),
                           child: const Text("PROFILE"),
                         ),
-                      )
+                      ),
+                      Align(
+                        alignment: const Alignment(0.0, -0.2),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 30),
+                          ),
+                          child: const Text("HOME"),
+                        ),
+                      ),
+                      Align(
+                        alignment: const Alignment(0.8, -0.2),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                          ),
+                          child: const Text("FRIENDS"),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
