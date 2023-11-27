@@ -62,6 +62,22 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/decision_map.csv
+    - assets/images/profile_pics/2.jpeg
+    - assets/images/profile_pics/1.jpeg
+    - assets/images/profile_pics/3.jpeg
+    - assets/images/profile_pics/4.jpeg
+    - assets/images/profile_pics/5.jpeg
+    - assets/images/profile_pics/6.jpeg
+    - assets/images/profile_pics/7.jpeg
+    - assets/images/profile_pics/8.jpeg
+    - assets/images/profile_pics/9.jpeg
+    - assets/images/profile_pics/10.jpeg
+    - assets/images/profile_pics/11.jpeg
+    - assets/images/profile_pics/12.jpeg
+    - assets/images/profile_pics/13.jpeg
+    - assets/images/profile_pics/14.jpeg
+    - assets/images/profile_pics/15.jpeg
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -68,7 +68,6 @@ class MyFlutterState extends State<MyFlutterApp> {
     setState(() {
       for (Node nextNode in decisionMap) {
         if (nextNode.iD == nextID) {
-          backID = iD;
           iD = nextNode.iD;
           nextID = nextNode.nextID;
           description = nextNode.description;
@@ -81,7 +80,7 @@ class MyFlutterState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Colors.grey,
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -90,56 +89,89 @@ class MyFlutterState extends State<MyFlutterApp> {
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
-              Align(
-                alignment: const Alignment(0.0, -0.2),
-                child: MaterialButton(
-                  onPressed: () {
-                    buttonHandler();
-                  },
-                  color: const Color(0xff019fa1),
-                  elevation: 50,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                  textColor: const Color(0xfffffdfd),
-                  height: 40,
-                  minWidth: 140,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: const Text(
-                    "Click Here",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                    ),
-                  ),
-                ),
+              const Align(
+                alignment: Alignment(0.0, -0.83),
+                child: Text('Social Media Application'),
               ),
               Align(
-                alignment: const Alignment(0.0, -0.6),
+                alignment: const Alignment(0.0, -0.1),
                 child: Container(
-                    width: MediaQuery.of(context).size.width * 0.96,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.horizontal()),
-                    child: Stack(
-                      children: [
-                        Text(
-                          description,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.clip,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 20,
-                            letterSpacing: 1,
-                            color: Color(0xffffffff),
-                          ),
-                        ),
-                      ],
-                    )),
+                  width: 410,
+                  height: 672,
+                  decoration: const BoxDecoration(color: Colors.black12),
+                  child: Stack(children: [
+                    Align(
+                        alignment: const Alignment(0.0, 0.0),
+                        child: GridView.count(
+                          primary: false,
+                          padding: const EdgeInsets.all(10),
+                          crossAxisSpacing: 6,
+                          crossAxisCount: 3,
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/1.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/2.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/3.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/4.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/5.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/6.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/7.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/8.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/9.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/10.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/11.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/12.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/13.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/14.jpeg'),
+                            ),
+                            CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/15.jpeg'),
+                            ),
+                          ],
+                        )),
+                  ]),
+                ),
               ),
               Align(
                 alignment: const Alignment(0.0, 1.0),
