@@ -204,7 +204,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                                 vertical: 20, horizontal: 30),
                           ),
                           child: const Icon(
-                            Icons.home,
+                            Icons.settings,
                             color: Colors.white,
                             size: 24.0,
                           ),
