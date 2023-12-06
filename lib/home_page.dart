@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
                   height: 650,
                   decoration: const BoxDecoration(
                     color: Colors.black12,
-                    backgroundBlendMode: BlendMode.srcOver,
+                    borderRadius: BorderRadius.horizontal(
+                        left: Radius.circular(50), right: Radius.circular(50)),
                   ),
                   child: Stack(children: [
                     Align(

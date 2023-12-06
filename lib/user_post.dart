@@ -17,14 +17,105 @@ class UserPost extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
             Align(
-              alignment: const Alignment(-0.96, -0.98),
+              alignment: const Alignment(-0.0, -0.97),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: 150,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey,
+                    ),
+                    alignment: const Alignment(0.0, 0.0),
+                    child: const Text("User Picture"),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 78,
+                    width: 240,
+                    color: Colors.deepOrangeAccent,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 26,
+                          width: 240,
+                          // color: Colors.red,
+                          alignment: const Alignment(0.0, 0.0),
+                          child: const Text("@ Rhys1997"),
+                        ),
+                        Container(
+                          height: 26,
+                          width: 240,
+                          // color: Colors.blue,
+                          alignment: const Alignment(0.0, 0.0),
+                          child: const Text("Number of Followers: 403"),
+                        ),
+                        Container(
+                          height: 26,
+                          width: 240,
+                          // color: Colors.pink,
+                          alignment: const Alignment(0.0, 0.0),
+                          child: const Text("Post Likes: 68"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0.0, -0.45),
               child: Container(
-                height: 150,
-                width: 150,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
+                height: 200,
+                width: 410,
+                decoration: BoxDecoration(
                   color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
                 ),
+                alignment: const Alignment(0.0, 0.0),
+                child: const Text('Post Message'),
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0.0, 0.34),
+              child: Container(
+                height: 250,
+                width: 410,
+                decoration: BoxDecoration(
+                  color: Colors.lightGreenAccent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: const Alignment(0.0, 0.0),
+                child: const Text("Comment Section"),
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0.0, 0.693),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  MaterialButton(
+                    onPressed: () {},
+                    color: Colors.purple,
+                    height: 60,
+                    minWidth: 150,
+                    textColor: Colors.white,
+                    child: const Text("Comment"),
+                  ),
+                  const SizedBox(width: 30),
+                  MaterialButton(
+                    onPressed: () {},
+                    color: Colors.purple,
+                    height: 60,
+                    minWidth: 150,
+                    textColor: Colors.white,
+                    child: const Text("Like Post"),
+                  ),
+                ],
               ),
             ),
             Align(
