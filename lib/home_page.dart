@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'user_post.dart';
 
-void buttonHandler(BuildContext context) {
+void userPostButtonHandler(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const UserPost()),
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                         alignment: const Alignment(0.7, -0.2),
                         child: ElevatedButton(
                           onPressed: () {
-                            buttonHandler(context);
+                            userPostButtonHandler(context);
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
