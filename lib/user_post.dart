@@ -91,6 +91,15 @@ class UserPost extends StatelessWidget {
                 ),
                 alignment: const Alignment(0.0, 0.0),
                 child: const Text("Comment Section"),
+                // child: Column(
+                //   children: [
+                //     Container(
+                //       height: 100,
+                //       width: 410,
+                //       color: Colors.deepOrange,
+                    ),
+                  ],
+                ),
               ),
             ),
             Align(
@@ -104,7 +113,7 @@ class UserPost extends StatelessWidget {
                     height: 60,
                     minWidth: 150,
                     textColor: Colors.white,
-                    child: const Text("Comment"),
+                    child: const Icon(Icons.comment),
                   ),
                   const SizedBox(width: 30),
                   MaterialButton(
@@ -113,7 +122,7 @@ class UserPost extends StatelessWidget {
                     height: 60,
                     minWidth: 150,
                     textColor: Colors.white,
-                    child: const Text("Like Post"),
+                    child: const Icon(Icons.thumb_up_rounded),
                   ),
                 ],
               ),
@@ -135,9 +144,9 @@ class UserPost extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
+                              vertical: 20, horizontal: 30),
                         ),
-                        child: const Text("FRIENDS"),
+                        child: const Icon(Icons.people),
                       ),
                     ),
                     Align(
@@ -161,9 +170,9 @@ class UserPost extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
+                              vertical: 20, horizontal: 30),
                         ),
-                        child: const Text("PROFILE"),
+                        child: const Icon(Icons.person),
                       ),
                     ),
                   ],

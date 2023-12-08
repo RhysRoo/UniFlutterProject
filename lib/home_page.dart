@@ -138,9 +138,9 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 20),
+                                vertical: 20, horizontal: 30),
                           ),
-                          child: const Text("FRIENDS"),
+                          child: const Icon(Icons.people),
                         ),
                       ),
                       Align(
@@ -166,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 20),
+                                vertical: 20, horizontal: 30),
                           ),
-                          child: const Text("PROFILE"),
+                          child: const Icon(Icons.person),
                         ),
                       ),
                     ],
