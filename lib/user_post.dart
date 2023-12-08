@@ -90,16 +90,29 @@ class UserPost extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: const Alignment(0.0, 0.0),
-                child: const Text("Comment Section"),
-                // child: Column(
-                //   children: [
-                //     Container(
-                //       height: 100,
-                //       width: 410,
-                //       color: Colors.deepOrange,
-                    ),
-                  ],
-                ),
+                // child: const Text("Comment Section"),
+                child: Column(children: [
+                  Container(
+                    height: 62.5,
+                    width: 410,
+                    color: Colors.deepOrange,
+                  ),
+                  Container(
+                    height: 62.5,
+                    width: 410,
+                    color: Colors.green,
+                  ),
+                  Container(
+                    color: Colors.yellow,
+                    height: 62.5,
+                    width: 410,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    height: 62.5,
+                    width: 410,
+                  ),
+                ]),
               ),
             ),
             Align(
