@@ -154,15 +154,13 @@ class _HomePageState extends State<HomePage> {
                       Align(
                         alignment: const Alignment(0.0, -0.3),
                         child: ElevatedButton(
-                          onPressed: () {
-                            settingsButtonHandler(context);
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 30),
                           ),
                           child: const Icon(
-                            Icons.settings,
+                            Icons.add_box,
                             color: Colors.white,
                             size: 30.0,
                           ),
@@ -171,12 +169,14 @@ class _HomePageState extends State<HomePage> {
                       Align(
                         alignment: const Alignment(0.7, -0.2),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            settingsButtonHandler(context);
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 30),
                           ),
-                          child: const Icon(Icons.person),
+                          child: const Icon(Icons.settings),
                         ),
                       ),
                     ],

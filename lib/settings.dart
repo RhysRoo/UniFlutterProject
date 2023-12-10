@@ -74,7 +74,7 @@ class Settings extends StatelessWidget {
                 width: 410,
                 decoration: BoxDecoration(
                   color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(40),
                 ),
                 alignment: const Alignment(0.0, 0.0),
                 child: const Text('Settings UI & Buttons'),

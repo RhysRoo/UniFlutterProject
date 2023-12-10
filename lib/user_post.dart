@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/home_page.dart';
 
 class UserPost extends StatelessWidget {
   const UserPost({Key? key}) : super(key: key);
@@ -180,12 +181,14 @@ class UserPost extends StatelessWidget {
                     Align(
                       alignment: const Alignment(0.7, -0.2),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          settingsButtonHandler(context);
+                        },
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               vertical: 20, horizontal: 30),
                         ),
-                        child: const Icon(Icons.person),
+                        child: const Icon(Icons.settings),
                       ),
                     ),
                   ],
