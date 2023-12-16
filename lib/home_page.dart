@@ -62,66 +62,141 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(10),
                         crossAxisSpacing: 6,
                         crossAxisCount: 3,
-                        children: const [
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/1.jpeg'),
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/1.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/2.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/2.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/3.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/3.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/4.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/4.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/5.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/5.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/6.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/6.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/7.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/7.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/8.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/8.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage('assets/images/profile_pics/9.jpeg'),
+                          InkWell(
+                            onTap: (() {
+                              userPostButtonHandler(context);
+                            }),
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/9.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/10.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/10.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/11.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/11.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/12.jpeg'),
+                          InkWell(
+                            onTap: () {
+                              userPostButtonHandler(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/12.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/13.jpeg'),
+                          InkWell(
+                            onTap: (() {
+                              userPostButtonHandler(context);
+                            }),
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/13.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/14.jpeg'),
+                          InkWell(
+                            onTap: (() {
+                              userPostButtonHandler(context);
+                            }),
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/14.jpeg'),
+                            ),
                           ),
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/profile_pics/15.jpeg'),
+                          InkWell(
+                            onTap: (() {
+                              userPostButtonHandler(context);
+                            }),
+                            child: const CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  'assets/images/profile_pics/15.jpeg'),
+                            ),
                           ),
                         ],
                       ),
