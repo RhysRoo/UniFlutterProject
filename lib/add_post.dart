@@ -6,11 +6,11 @@ class AddPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Controller used to see what user is typing
+    final _textController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Add Post'),
-      ),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -18,62 +18,77 @@ class AddPost extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
             Align(
-              alignment: const Alignment(-0.0, -0.5),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        height: 150,
-                        width: 150,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey,
-                        ),
-                        alignment: const Alignment(0.0, 0.0),
-                        child: const Text("Profile"),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Align(
-                        child: Container(
-                          height: 300,
-                          width: 410,
-                          decoration: BoxDecoration(
+              alignment: Alignment.center,
+              child: Flexible(
+                fit: FlexFit.loose,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 150,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
                             color: Colors.grey,
-                            borderRadius: BorderRadius.circular(40),
                           ),
                           alignment: const Alignment(0.0, 0.0),
-                          child: const Text('Touch here to add post'),
+                          child: const Text("Profile"),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.blue),
+                        const SizedBox(
+                          height: 20,
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const TestHomePage()),
-                          );
-                        },
-                        child: const Text(
-                          'Add Post',
-                          style: TextStyle(
-                              color: Colors.black), // Change the color here
+                        Align(
+                          child: Container(
+                            height: 75,
+                            width: 410,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            alignment: const Alignment(0.0, 0.0),
+                            child: TextField(
+                              controller: _textController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    _textController.clear();
+                                  },
+                                  icon: const Icon(Icons.clear),
+                                ),
+                              ),
+                              maxLines: null,
+                              minLines: 1,
+                            ),
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const TestHomePage()),
+                            );
+                          },
+                          child: const Text(
+                            'Add Post',
+                            style: TextStyle(
+                                color: Colors.black), // Change the color here
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ]),
