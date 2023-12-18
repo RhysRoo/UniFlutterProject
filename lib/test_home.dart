@@ -62,46 +62,50 @@ class _HomePageState extends State<TestHomePage> {
                 alignment: Alignment(0.0, -0.83),
                 child: Text('Social Media Application'),
               ),
-              Align(
-                alignment: const Alignment(0.0, -0.1),
-                child: Container(
-                  width: 410,
-                  height: 650,
-                  decoration: const BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(50), right: Radius.circular(50)),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.horizontal(
-                        left: Radius.circular(50), right: Radius.circular(50)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Stack(children: [
-                        Align(
-                          alignment: const Alignment(0.0, 0.0),
-                          child: GridView.builder(
-                            itemCount: imagePaths.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 13,
-                              mainAxisSpacing: 13,
+              SafeArea(
+                child: Align(
+                  alignment: const Alignment(0.0, -0.1),
+                  child: Container(
+                    width: 410,
+                    height: 650,
+                    decoration: const BoxDecoration(
+                      color: Colors.black12,
+                      borderRadius: BorderRadius.horizontal(
+                          left: Radius.circular(50),
+                          right: Radius.circular(50)),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.horizontal(
+                          left: Radius.circular(50),
+                          right: Radius.circular(50)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Stack(children: [
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: GridView.builder(
+                              itemCount: imagePaths.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 13,
+                                mainAxisSpacing: 13,
+                              ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return InkWell(
+                                  onTap: () {
+                                    userPostButtonHandler(context);
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundImage:
+                                        AssetImage(imagePaths[index]),
+                                  ),
+                                );
+                              },
                             ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return InkWell(
-                                onTap: () {
-                                  userPostButtonHandler(context);
-                                },
-                                child: CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage(imagePaths[index]),
-                                ),
-                              );
-                            },
                           ),
-                        ),
-                      ]),
+                        ]),
+                      ),
                     ),
                   ),
                 ),
