@@ -17,6 +17,38 @@ class AddPost extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  alignment: Alignment(0.3, -0.8),
+                  child: BackButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TestHomePage()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Container(
+                  alignment: const Alignment(0.17, -0.78),
+                  child: const Text(
+                    "Go Back",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Align(
               alignment: Alignment.center,
               child: Flexible(
@@ -51,7 +83,8 @@ class AddPost extends StatelessWidget {
                             child: TextField(
                               controller: _textController,
                               decoration: InputDecoration(
-                                border: OutlineInputBorder(),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20)),
                                 suffixIcon: IconButton(
                                   onPressed: () {
                                     _textController.clear();

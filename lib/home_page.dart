@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: const Alignment(0.0, -0.1),
                 child: Container(
                   width: 410,
-                  height: 650,
+                  height: 600,
                   decoration: const BoxDecoration(
                     color: Colors.black12,
                     borderRadius: BorderRadius.horizontal(

@@ -68,10 +68,10 @@ class _HomePageState extends State<TestHomePage> {
             children: [
               SafeArea(
                 child: Align(
-                  alignment: const Alignment(0.0, -0.6),
+                  alignment: const Alignment(0.0, -0.5),
                   child: Container(
                     width: 410,
-                    height: 700,
+                    height: 670,
                     decoration: const BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.horizontal(
@@ -88,17 +88,38 @@ class _HomePageState extends State<TestHomePage> {
                           Align(
                             alignment: Alignment.topCenter,
                             child: GridView.builder(
+                              scrollDirection: Axis.horizontal,
                               itemCount: imagePaths.length,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
+                                crossAxisCount: 4,
                                 crossAxisSpacing: 13,
                                 mainAxisSpacing: 13,
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return InkWell(
                                   onTap: () {
-                                    userPostButtonHandler(context);
+                                    Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                        pageBuilder:
+                                            (context, animation1, animation2) =>
+                                                const UserPost(),
+                                        transitionDuration:
+                                            const Duration(milliseconds: 300),
+                                        transitionsBuilder: (context, animation,
+                                            secondaryAnimation, child) {
+                                          animation = CurvedAnimation(
+                                            parent: animation,
+                                            curve: Curves.bounceInOut,
+                                          );
+                                          return ScaleTransition(
+                                            scale: animation,
+                                            child: child,
+                                          );
+                                        },
+                                      ),
+                                    );
                                   },
                                   child: CircleAvatar(
                                     backgroundImage:
