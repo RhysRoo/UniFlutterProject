@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'user_post.dart';
 import 'settings.dart';
+import 'add_post.dart';
 
 void userPostButtonHandler(BuildContext context) {
   Navigator.push(
@@ -13,6 +14,13 @@ void settingsButtonHandler(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const Settings()),
+  );
+}
+
+void AddPostButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const AddPost()),
   );
 }
 
@@ -58,16 +66,12 @@ class _HomePageState extends State<TestHomePage> {
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
-              const Align(
-                alignment: Alignment(0.0, -0.83),
-                child: Text('Social Media Application'),
-              ),
               SafeArea(
                 child: Align(
-                  alignment: const Alignment(0.0, -0.1),
+                  alignment: const Alignment(0.0, -0.6),
                   child: Container(
                     width: 410,
-                    height: 650,
+                    height: 700,
                     decoration: const BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.horizontal(
@@ -135,7 +139,9 @@ class _HomePageState extends State<TestHomePage> {
                       Align(
                         alignment: const Alignment(0.0, -0.3),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AddPostButtonHandler(context);
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 30),
