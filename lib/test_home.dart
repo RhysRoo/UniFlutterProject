@@ -160,47 +160,33 @@ class _HomePageState extends State<TestHomePage> {
                       padding: EdgeInsets.symmetric(
                           horizontal: MediaQuery.of(context).size.width * 0.05),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          MaterialButton(
-                            onPressed: () {
-                              settingsButtonHandler(context);
-                            },
-                            color: const Color(0xFF445352),
-                            shape: const CircleBorder(),
-                            child: const Icon(
-                              Icons.settings,
-                              size: 50,
-                              color: Colors.white,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            MaterialButton(
+                              onPressed: () {
+                                settingsButtonHandler(context);
+                              },
+                              color: const Color(0xFF445352),
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.settings,
+                                size: 50,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          MaterialButton(
-                            onPressed: (() {
-                              AddPostButtonHandler(context);
-                            }),
-                            color: const Color(0xFF445352),
-                            shape: const CircleBorder(),
-                            child: const Icon(
-                              Icons.add,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
-                          MaterialButton(
-                            onPressed: (() {
-                              userPostButtonHandler(
-                                  context); // This should probably be userPostButtonHandler instead of settingsButtonHandler
-                            }),
-                            color: const Color(0xFF445352),
-                            shape: const CircleBorder(),
-                            child: const Icon(
-                              Icons.person,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                            MaterialButton(
+                              onPressed: (() {
+                                AddPostButtonHandler(context);
+                              }),
+                              color: const Color(0xFF445352),
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.add,
+                                size: 50,
+                                color: Colors.white,
+                              ),
+                            )
+                          ]),
                     ),
                   ),
                 ],

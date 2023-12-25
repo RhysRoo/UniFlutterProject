@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/home_page.dart';
+import 'test_home.dart';
 import 'package:untitled1/settings.dart';
+
+void HomePageButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const TestHomePage()),
+  );
+}
 
 class UserPost extends StatelessWidget {
   const UserPost({Key? key}) : super(key: key);
@@ -8,8 +15,9 @@ class UserPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        backgroundColor: Colors.grey[600],
         title: const Text('Post Information'),
       ),
       body: Align(
@@ -19,13 +27,13 @@ class UserPost extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
             Align(
-              alignment: const Alignment(-0.0, -0.97),
+              alignment: const Alignment(-0.0, -0.9),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     height: 150,
-                    width: 150,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.grey,
@@ -33,21 +41,17 @@ class UserPost extends StatelessWidget {
                     alignment: const Alignment(0.0, 0.0),
                     child: const Text("User Picture"),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
                   Container(
                     height: 78,
-                    width: 240,
-                    color: Colors.deepOrangeAccent,
+                    width: MediaQuery.of(context).size.width * 0.55,
                     child: Column(
                       children: [
                         Container(
                           height: 26,
-                          width: 240,
+                          width: MediaQuery.of(context).size.width * 0.8,
                           // color: Colors.red,
                           alignment: const Alignment(0.0, 0.0),
-                          child: const Text("@ Rhys1997"),
+                          child: const Text("@ Rhys199"),
                         ),
                         Container(
                           height: 26,
@@ -70,10 +74,11 @@ class UserPost extends StatelessWidget {
               ),
             ),
             Align(
-              alignment: const Alignment(0.0, -0.45),
+              //Users Post
+              alignment: const Alignment(0.0, -0.3),
               child: Container(
-                height: 200,
-                width: 410,
+                height: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.width * 0.9,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10),
@@ -83,63 +88,17 @@ class UserPost extends StatelessWidget {
               ),
             ),
             Align(
-              alignment: const Alignment(0.0, 0.34),
+              //Comment section
+              alignment: const Alignment(0.0, 0.5),
               child: Container(
-                height: 250,
-                width: 410,
+                height: MediaQuery.of(context).size.height * 0.25,
+                width: MediaQuery.of(context).size.width * 0.9,
                 decoration: BoxDecoration(
-                  color: Colors.lightGreenAccent,
+                  color: Colors.grey[600],
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: const Alignment(0.0, 0.0),
-                // child: const Text("Comment Section"),
-                child: Column(children: [
-                  Container(
-                    height: 62.5,
-                    width: 410,
-                    color: Colors.deepOrange,
-                  ),
-                  Container(
-                    height: 62.5,
-                    width: 410,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    color: Colors.yellow,
-                    height: 62.5,
-                    width: 410,
-                  ),
-                  Container(
-                    color: Colors.red,
-                    height: 62.5,
-                    width: 410,
-                  ),
-                ]),
-              ),
-            ),
-            Align(
-              alignment: const Alignment(0.0, 0.693),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  MaterialButton(
-                    onPressed: () {},
-                    color: Colors.purple,
-                    height: 60,
-                    minWidth: 150,
-                    textColor: Colors.white,
-                    child: const Icon(Icons.comment),
-                  ),
-                  const SizedBox(width: 30),
-                  MaterialButton(
-                    onPressed: () {},
-                    color: Colors.purple,
-                    height: 60,
-                    minWidth: 150,
-                    textColor: Colors.white,
-                    child: const Icon(Icons.thumb_up_rounded),
-                  ),
-                ],
+                child: const Text("Comment Section"),
               ),
             ),
             Column(
@@ -147,7 +106,7 @@ class UserPost extends StatelessWidget {
                   .end, // Add this to push your container to the bottom
               children: [
                 Container(
-                  height: 110,
+                  height: 100,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadiusGeometry.lerp(
@@ -160,32 +119,34 @@ class UserPost extends StatelessWidget {
                           0)!),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.05),
+                        horizontal: MediaQuery.of(context).size.width * 0.10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         MaterialButton(
+                          //Back Button
                           onPressed: () {
-                            settingsButtonHandler(context);
+                            HomePageButtonHandler(context);
                           },
                           color: const Color(0xFF445352),
                           shape: const CircleBorder(),
                           child: const Icon(
-                            Icons.settings,
+                            Icons.arrow_back,
                             size: 50,
                             color: Colors.white,
                           ),
                         ),
                         MaterialButton(
                           onPressed: (() {
-                            (context);
+                            logInButtonHandler(context);
                           }),
                           color: const Color(0xFF445352),
-                          shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.add,
-                            size: 50,
-                            color: Colors.white,
+                          child: const Text(
+                            'Like',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         MaterialButton(
@@ -194,11 +155,9 @@ class UserPost extends StatelessWidget {
                                 context); // This should probably be userPostButtonHandler instead of settingsButtonHandler
                           }),
                           color: const Color(0xFF445352),
-                          shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.person,
-                            size: 50,
-                            color: Colors.white,
+                          child: const Text(
+                            'Comment',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
                       ],

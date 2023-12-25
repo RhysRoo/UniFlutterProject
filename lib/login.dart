@@ -22,7 +22,7 @@ class Login extends StatelessWidget {
                 alignment: const Alignment(0.0, 0.1),
                 child: Container(
                   height: 400,
-                  width: 380,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: ShapeDecoration(
                       color: Colors.amber,
                       shape: RoundedRectangleBorder(
@@ -33,7 +33,7 @@ class Login extends StatelessWidget {
               //Username
               alignment: const Alignment(0.0, -0.2),
               child: Container(
-                width: 300,
+                width: MediaQuery.of(context).size.width * 0.85,
                 color: Colors.cyan[700],
                 child: const TextField(
                   style: TextStyle(fontSize: 19.0),
@@ -53,7 +53,7 @@ class Login extends StatelessWidget {
               //Password
               alignment: const Alignment(0.0, 0.0),
               child: Container(
-                width: 300,
+                width: MediaQuery.of(context).size.width * 0.85,
                 color: Colors.cyan[700],
                 child: const TextField(
                   style: TextStyle(fontSize: 19.0),
@@ -72,7 +72,7 @@ class Login extends StatelessWidget {
             Align(
               alignment: const Alignment(0.0, 0.35),
               child: Container(
-                width: 100,
+                width: MediaQuery.of(context).size.width * 0.2,
                 height: 50,
                 decoration: ShapeDecoration(
                   color: Colors.grey,

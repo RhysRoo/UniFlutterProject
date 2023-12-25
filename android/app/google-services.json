@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868056082454",
+    "project_id": "socialmediaapp-d09f1",
+    "storage_bucket": "socialmediaapp-d09f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868056082454:android:f3b65b45bd3cf638e76d37",
+        "android_client_info": {
+          "package_name": "com.example.flutter_worksheet_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWixOyeEdCxa6QpQX-osKzrCnO7WKv38g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

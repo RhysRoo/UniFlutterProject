@@ -100,7 +100,7 @@ class AddPost extends StatelessWidget {
                         Align(
                           child: Container(
                             height: 75,
-                            width: 410,
+                            width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                             ),
