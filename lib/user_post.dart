@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/home_page.dart';
+import 'package:untitled1/settings.dart';
 
 class UserPost extends StatelessWidget {
   const UserPost({Key? key}) : super(key: key);
@@ -141,59 +142,70 @@ class UserPost extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
-              alignment: const Alignment(0.0, 1.0),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width * 0.25,
-                decoration: BoxDecoration(
-                  color: Colors.brown[300],
-                  borderRadius: const BorderRadius.horizontal(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment
+                  .end, // Add this to push your container to the bottom
+              children: [
+                Container(
+                  height: 110,
+                  decoration: BoxDecoration(
+                      color: Colors.black12,
+                      borderRadius: BorderRadiusGeometry.lerp(
+                          const BorderRadius.only(
+                              topLeft: Radius.circular(110),
+                              topRight: Radius.circular(110)),
+                          const BorderRadius.only(
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0)),
+                          0)!),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.05),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MaterialButton(
+                          onPressed: () {
+                            settingsButtonHandler(context);
+                          },
+                          color: const Color(0xFF445352),
+                          shape: const CircleBorder(),
+                          child: const Icon(
+                            Icons.settings,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: (() {
+                            (context);
+                          }),
+                          color: const Color(0xFF445352),
+                          shape: const CircleBorder(),
+                          child: const Icon(
+                            Icons.add,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: (() {
+                            userPostButtonHandler(
+                                context); // This should probably be userPostButtonHandler instead of settingsButtonHandler
+                          }),
+                          color: const Color(0xFF445352),
+                          shape: const CircleBorder(),
+                          child: const Icon(
+                            Icons.person,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: const Alignment(-0.7, -0.2),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 30),
-                        ),
-                        child: const Icon(Icons.people),
-                      ),
-                    ),
-                    Align(
-                      alignment: const Alignment(0.0, -0.3),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 30),
-                        ),
-                        child: const Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: const Alignment(0.7, -0.2),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          settingsButtonHandler(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 30),
-                        ),
-                        child: const Icon(Icons.settings),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              ],
             ),
           ]),
         ),

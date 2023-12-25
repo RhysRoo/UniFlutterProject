@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/login.dart';
+import 'login.dart';
+
+void logInButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Login()),
+  );
+}
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -17,7 +26,7 @@ class Settings extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
             Align(
-              alignment: const Alignment(-0.0, -0.95),
+              alignment: const Alignment(-0.0, -0.6),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -32,11 +41,11 @@ class Settings extends StatelessWidget {
                     child: const Text("Profile"),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 30,
                   ),
                   Container(
                     height: 78,
-                    width: 240,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     color: Colors.deepOrangeAccent,
                     child: Column(
                       children: [
@@ -68,16 +77,73 @@ class Settings extends StatelessWidget {
               ),
             ),
             Align(
-              alignment: const Alignment(0.0, 0.65),
+              alignment: const Alignment(0.0, 0.3),
               child: Container(
-                height: 600,
-                width: 410,
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width * 0.92,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(40),
                 ),
-                alignment: const Alignment(0.0, 0.0),
-                child: const Text('Settings UI & Buttons'),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 80,
+                    ),
+                    Container(
+                      //Log out button
+
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                          onPressed: (() {
+                            logInButtonHandler(context);
+                          }),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey[900]),
+                          child: const Text(
+                            'Log Out',
+                          )),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      //Change Name button
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                          onPressed: (() {
+                            logInButtonHandler(context);
+                          }),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey[800]),
+                          child: const Text(
+                            'Change Name',
+                          )),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      //Change Profile Pic button
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                          onPressed: (() {
+                            logInButtonHandler(context);
+                          }),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey[700]),
+                          child: const Text(
+                            'Change Profile Picture',
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ]),

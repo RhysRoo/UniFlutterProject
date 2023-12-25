@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/test_home.dart';
+import 'user_post.dart';
+import 'settings.dart';
+import 'add_post.dart';
+
+void userPostButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const UserPost()),
+  );
+}
+
+void settingsButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Settings()),
+  );
+}
+
+// ignore: non_constant_identifier_names
+void AddPostButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const AddPost()),
+  );
+}
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);
@@ -7,7 +32,7 @@ class AddPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Controller used to see what user is typing
-    final _textController = TextEditingController();
+    final textController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -23,7 +48,7 @@ class AddPost extends StatelessWidget {
                   width: 10,
                 ),
                 Container(
-                  alignment: Alignment(0.3, -0.8),
+                  alignment: const Alignment(0.3, -0.8),
                   child: BackButton(
                     onPressed: () {
                       Navigator.push(
@@ -81,13 +106,13 @@ class AddPost extends StatelessWidget {
                             ),
                             alignment: const Alignment(0.0, 0.0),
                             child: TextField(
-                              controller: _textController,
+                              controller: textController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20)),
                                 suffixIcon: IconButton(
                                   onPressed: () {
-                                    _textController.clear();
+                                    textController.clear();
                                   },
                                   icon: const Icon(Icons.clear),
                                 ),
