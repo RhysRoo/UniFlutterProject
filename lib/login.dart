@@ -89,7 +89,9 @@ class Login extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          content: Text(e.message ?? 'Login error'),
+                          content: Text(
+                              'Invalid email or password.\nPlease try again.',
+                              style: TextStyle(fontSize: 20)),
                         ),
                       );
                     }

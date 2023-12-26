@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/login.dart';
 import 'login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void logInButtonHandler(BuildContext context) {
   Navigator.push(
@@ -9,11 +11,18 @@ void logInButtonHandler(BuildContext context) {
   );
 }
 
+String getUserEmail() {
+  final user = FirebaseAuth.instance.currentUser;
+  return user?.email ?? 'No user signed in';
+}
+
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String userEmail = getUserEmail();
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -33,7 +42,7 @@ class Settings extends StatelessWidget {
                 children: [
                   Container(
                     height: 150,
-                    width: 150,
+                    width: 160,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.grey,
@@ -42,19 +51,25 @@ class Settings extends StatelessWidget {
                     child: const Text("Profile"),
                   ),
                   const SizedBox(
-                    width: 30,
+                    width: 25,
                   ),
                   Container(
-                    height: 78,
-                    width: MediaQuery.of(context).size.width * 0.3,
+                    height: 90,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     child: Column(
                       children: [
                         Container(
-                          height: 26,
+                          height: 35,
                           width: 240,
                           // color: Colors.red,
-                          alignment: const Alignment(0.0, 0.0),
-                          child: const Text("@ Rhys1997"),
+                          alignment: Alignment.center,
+                          child: Text(
+                            userEmail,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 17,
+                            ),
+                          ),
                         ),
                         Container(
                           height: 26,
