@@ -35,7 +35,7 @@ class AddPost extends StatelessWidget {
     final textController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[300],
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -85,8 +85,8 @@ class AddPost extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          height: 150,
-                          width: 150,
+                          height: 180,
+                          width: 180,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.grey,
@@ -128,7 +128,7 @@ class AddPost extends StatelessWidget {
                         TextButton(
                           style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Colors.grey[500]),
                           ),
                           onPressed: () {
                             Navigator.push(

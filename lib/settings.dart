@@ -15,9 +15,10 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text('Settings'),
+        backgroundColor: Colors.grey[600],
       ),
       body: Align(
         alignment: Alignment.center,
@@ -45,8 +46,7 @@ class Settings extends StatelessWidget {
                   ),
                   Container(
                     height: 78,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    color: Colors.deepOrangeAccent,
+                    width: MediaQuery.of(context).size.width * 0.3,
                     child: Column(
                       children: [
                         Container(

@@ -32,6 +32,7 @@ class UserPost extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
+                    //User Picture
                     height: 150,
                     width: MediaQuery.of(context).size.width * 0.4,
                     decoration: const BoxDecoration(
@@ -47,6 +48,7 @@ class UserPost extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
+                          // Username
                           height: 26,
                           width: MediaQuery.of(context).size.width * 0.8,
                           // color: Colors.red,
@@ -54,6 +56,7 @@ class UserPost extends StatelessWidget {
                           child: const Text("@ Rhys199"),
                         ),
                         Container(
+                          // Followers
                           height: 26,
                           width: 240,
                           // color: Colors.blue,
@@ -61,6 +64,7 @@ class UserPost extends StatelessWidget {
                           child: const Text("Followers: 2"),
                         ),
                         Container(
+                          // Post likes
                           height: 26,
                           width: 240,
                           // color: Colors.pink,
@@ -106,6 +110,7 @@ class UserPost extends StatelessWidget {
                   .end, // Add this to push your container to the bottom
               children: [
                 Container(
+                  // Bottom navbar
                   height: 100,
                   decoration: BoxDecoration(
                       color: Colors.black12,
