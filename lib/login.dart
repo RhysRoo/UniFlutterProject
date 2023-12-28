@@ -3,22 +3,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'test_home.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MaterialApp(home: Login()));
-}
-
 class Login extends StatelessWidget {
   // Controllers should be final if they are in a StatelessWidget
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  Login({super.key});
+  Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Stack(
@@ -62,9 +57,9 @@ class Login extends StatelessWidget {
 
             // Login Button
             Align(
-              alignment: const Alignment(0.0, 0.35),
+              alignment: const Alignment(0.0, 0.2),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.2,
+                width: MediaQuery.of(context).size.width * 0.3,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () async {
@@ -96,7 +91,10 @@ class Login extends StatelessWidget {
                       );
                     }
                   },
-                  child: const Text('Log-in'),
+                  child: const Text(
+                    'Log-in',
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
             ),
