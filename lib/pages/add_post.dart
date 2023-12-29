@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/test_home.dart';
+import 'package:untitled1/pages/test_home.dart';
 import 'user_post.dart';
-import 'settings.dart';
-import 'add_post.dart';
+import 'user_settings.dart';
 
 void userPostButtonHandler(BuildContext context) {
   Navigator.push(
@@ -14,7 +13,7 @@ void userPostButtonHandler(BuildContext context) {
 void settingsButtonHandler(BuildContext context) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Settings()),
+    MaterialPageRoute(builder: (context) => const UserSettings()),
   );
 }
 
@@ -27,7 +26,7 @@ void AddPostButtonHandler(BuildContext context) {
 }
 
 class AddPost extends StatelessWidget {
-  const AddPost({Key? key}) : super(key: key);
+  const AddPost({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,37 +41,24 @@ class AddPost extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  alignment: const Alignment(0.3, -0.8),
-                  child: BackButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const TestHomePage()),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Container(
-                  alignment: const Alignment(0.17, -0.78),
-                  child: const Text(
-                    "Go Back",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+            Container(
+              alignment: const Alignment(-0.9, -0.82),
+              child: BackButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TestHomePage()),
+                  );
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment(0.0, -0.8),
+              child: Text(
+                'Create Post',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+              ),
             ),
             Align(
               alignment: Alignment.center,

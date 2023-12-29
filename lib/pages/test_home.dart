@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'user_post.dart';
-import 'settings.dart';
+import 'user_settings.dart';
 import 'add_post.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+import 'package:untitled1/database/user_model.dart';
 
 void userPostButtonHandler(BuildContext context) {
   Navigator.push(
@@ -13,7 +17,7 @@ void userPostButtonHandler(BuildContext context) {
 void settingsButtonHandler(BuildContext context) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Settings()),
+    MaterialPageRoute(builder: (context) => const UserSettings()),
   );
 }
 

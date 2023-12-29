@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/login.dart';
+import 'package:untitled1/pages/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'test_home.dart';
 
 void logInButtonHandler(BuildContext context) {
   Navigator.push(
@@ -15,8 +16,8 @@ String getUserEmail() {
   return user?.email ?? 'No user signed in';
 }
 
-class Settings extends StatelessWidget {
-  const Settings({Key? key}) : super(key: key);
+class UserSettings extends StatelessWidget {
+  const UserSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,6 @@ class Settings extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: const Text('Settings'),
-        backgroundColor: Colors.grey[600],
-      ),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -35,7 +32,26 @@ class Settings extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
             Align(
-              alignment: const Alignment(-0.0, -0.6),
+              alignment: Alignment(0.0, -0.8),
+              child: Text(
+                'User Settings',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Container(
+              alignment: const Alignment(-0.9, -0.82),
+              child: BackButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TestHomePage()),
+                  );
+                },
+              ),
+            ),
+            Align(
+              alignment: const Alignment(-0.0, -0.5),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -102,7 +118,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 80,
+                      height: 75,
                     ),
                     Container(
                       //Log out button

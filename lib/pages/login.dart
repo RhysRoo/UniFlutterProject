@@ -18,7 +18,7 @@ class Login extends StatelessWidget {
       body: Center(
         child: Stack(
           children: [
-            // ... Other UI elements ...
+            // Other UI elements
 
             // Email TextField
             Align(
@@ -85,7 +85,7 @@ class Login extends StatelessWidget {
                         context: context,
                         builder: (context) => AlertDialog(
                           content: Text(
-                              'Invalid email or password.\nPlease try again.',
+                              'Invalid email or password\n        Please try again.',
                               style: TextStyle(fontSize: 20)),
                         ),
                       );

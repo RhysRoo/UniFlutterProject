@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'test_home.dart';
-import 'package:untitled1/settings.dart';
+import 'package:untitled1/pages/user_settings.dart';
 
+// ignore: non_constant_identifier_names
 void HomePageButtonHandler(BuildContext context) {
   Navigator.push(
     context,
@@ -10,24 +11,39 @@ void HomePageButtonHandler(BuildContext context) {
 }
 
 class UserPost extends StatelessWidget {
-  const UserPost({Key? key}) : super(key: key);
+  const UserPost({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        backgroundColor: Colors.grey[600],
-        title: const Text('Post Information'),
-      ),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
+            const Align(
+              alignment: Alignment(0.0, -0.8),
+              child: Text(
+                'Post Information',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Container(
+              alignment: const Alignment(-0.9, -0.82),
+              child: BackButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TestHomePage()),
+                  );
+                },
+              ),
+            ),
             Align(
-              alignment: const Alignment(-0.0, -0.9),
+              alignment: const Alignment(-0.0, -0.63),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -79,7 +95,7 @@ class UserPost extends StatelessWidget {
             ),
             Align(
               //Users Post
-              alignment: const Alignment(0.0, -0.3),
+              alignment: const Alignment(0.0, -0.1),
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.2,
                 width: MediaQuery.of(context).size.width * 0.9,
@@ -93,7 +109,7 @@ class UserPost extends StatelessWidget {
             ),
             Align(
               //Comment section
-              alignment: const Alignment(0.0, 0.5),
+              alignment: const Alignment(0.0, 0.6),
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: MediaQuery.of(context).size.width * 0.9,
@@ -111,7 +127,7 @@ class UserPost extends StatelessWidget {
               children: [
                 Container(
                   // Bottom navbar
-                  height: 100,
+                  height: 90,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadiusGeometry.lerp(
@@ -126,21 +142,8 @@ class UserPost extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        MaterialButton(
-                          //Back Button
-                          onPressed: () {
-                            HomePageButtonHandler(context);
-                          },
-                          color: const Color(0xFF445352),
-                          shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        ),
                         MaterialButton(
                           onPressed: (() {
                             logInButtonHandler(context);
@@ -153,6 +156,9 @@ class UserPost extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          width: 30,
                         ),
                         MaterialButton(
                           onPressed: (() {
