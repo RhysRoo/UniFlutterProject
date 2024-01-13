@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/pages/login.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'test_home.dart';
 
@@ -31,7 +30,7 @@ class UserSettings extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Stack(alignment: Alignment.topLeft, children: [
-            Align(
+            const Align(
               alignment: Alignment(0.0, -0.8),
               child: Text(
                 'User Settings',
@@ -68,7 +67,7 @@ class UserSettings extends StatelessWidget {
                   const SizedBox(
                     width: 25,
                   ),
-                  Container(
+                  SizedBox(
                     height: 90,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: Column(
@@ -80,7 +79,7 @@ class UserSettings extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             userEmail,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: 17,
                             ),
@@ -154,7 +153,7 @@ class UserSettings extends StatelessWidget {
                             'Change Name',
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(

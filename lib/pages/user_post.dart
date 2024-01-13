@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'test_home.dart';
 import 'package:untitled1/pages/user_settings.dart';
@@ -8,6 +11,22 @@ void HomePageButtonHandler(BuildContext context) {
     context,
     MaterialPageRoute(builder: (context) => const TestHomePage()),
   );
+}
+
+Future<String> uploadImageToStorage(File imageFile, String userId) async {
+  String fileName =
+      'user_images/$userId/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
+  Reference storageRef = FirebaseStorage.instance.ref().child(fileName);
+  UploadTask uploadTask = storageRef.putFile(imageFile);
+  TaskSnapshot taskSnapshot = await uploadTask;
+  String imageUrl = await taskSnapshot.ref.getDownloadURL();
+  return imageUrl;
+}
+
+Future<void> saveImageUrlToFirestore(String userId, String imageUrl) async {
+  await FirebaseFirestore.instance.collection('users').doc(userId).update({
+    'imageURL': imageUrl,
+  });
 }
 
 class UserPost extends StatelessWidget {
@@ -58,7 +77,7 @@ class UserPost extends StatelessWidget {
                     alignment: const Alignment(0.0, 0.0),
                     child: const Text("User Picture"),
                   ),
-                  Container(
+                  SizedBox(
                     height: 78,
                     width: MediaQuery.of(context).size.width * 0.55,
                     child: Column(

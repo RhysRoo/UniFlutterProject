@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'test_home.dart';
+import 'signup.dart';
+
+void SignupButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Signup()),
+  );
+}
 
 class Login extends StatelessWidget {
   // Controllers should be final if they are in a StatelessWidget
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  Login({Key? key}) : super(key: key);
+  Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +65,7 @@ class Login extends StatelessWidget {
             // Login Button
             Align(
               alignment: const Alignment(0.0, 0.2),
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.3,
                 height: 50,
                 child: ElevatedButton(
@@ -79,11 +86,11 @@ class Login extends StatelessWidget {
                               builder: (context) => const TestHomePage()),
                         );
                       }
-                    } on FirebaseAuthException catch (e) {
+                    } on FirebaseAuthException {
                       // Handle errors from Firebase
                       showDialog(
                         context: context,
-                        builder: (context) => AlertDialog(
+                        builder: (context) => const AlertDialog(
                           content: Text(
                               'Invalid email or password\n        Please try again.',
                               style: TextStyle(fontSize: 20)),
@@ -98,6 +105,14 @@ class Login extends StatelessWidget {
                 ),
               ),
             ),
+            Align(
+              alignment: const Alignment(0.0, 0.33),
+              child: ElevatedButton(
+                  onPressed: (() {
+                    SignupButtonHandler(context);
+                  }),
+                  child: Text('Sign up')),
+            )
           ],
         ),
       ),

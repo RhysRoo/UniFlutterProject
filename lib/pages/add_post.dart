@@ -53,7 +53,7 @@ class AddPost extends StatelessWidget {
                 },
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment(0.0, -0.8),
               child: Text(
                 'Create Post',

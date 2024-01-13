@@ -3,9 +3,16 @@ import 'user_post.dart';
 import 'user_settings.dart';
 import 'add_post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:untitled1/database/user_model.dart';
+
+Future<List<UserModel>> fetchUsers() async {
+  QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection('users').get();
+  return querySnapshot.docs
+      .map((doc) => UserModel.fromDocumentSnapshot(doc))
+      .toList();
+}
 
 void userPostButtonHandler(BuildContext context) {
   Navigator.push(
@@ -30,34 +37,43 @@ void AddPostButtonHandler(BuildContext context) {
 }
 
 class TestHomePage extends StatefulWidget {
-  const TestHomePage({Key? key}) : super(key: key);
+  const TestHomePage({super.key});
 
   @override
   State<TestHomePage> createState() => _HomePageState();
 }
 
-List<String> imagePaths = [
-  'assets/images/profile_pics/1.jpeg',
-  'assets/images/profile_pics/2.jpeg',
-  'assets/images/profile_pics/3.jpeg',
-  'assets/images/profile_pics/4.jpeg',
-  'assets/images/profile_pics/5.jpeg',
-  'assets/images/profile_pics/6.jpeg',
-  'assets/images/profile_pics/7.jpeg',
-  'assets/images/profile_pics/8.jpeg',
-  'assets/images/profile_pics/9.jpeg',
-  'assets/images/profile_pics/10.jpeg',
-  'assets/images/profile_pics/11.jpeg',
-  'assets/images/profile_pics/12.jpeg',
-  'assets/images/profile_pics/13.jpeg',
-  'assets/images/profile_pics/14.jpeg',
-  'assets/images/profile_pics/15.jpeg',
-];
+// List<String> imagePaths = [
+//   'assets/images/profile_pics/1.jpeg',
+//   'assets/images/profile_pics/2.jpeg',
+//   'assets/images/profile_pics/3.jpeg',
+//   'assets/images/profile_pics/4.jpeg',
+//   'assets/images/profile_pics/5.jpeg',
+//   'assets/images/profile_pics/6.jpeg',
+//   'assets/images/profile_pics/7.jpeg',
+//   'assets/images/profile_pics/8.jpeg',
+//   'assets/images/profile_pics/9.jpeg',
+//   'assets/images/profile_pics/10.jpeg',
+//   'assets/images/profile_pics/11.jpeg',
+//   'assets/images/profile_pics/12.jpeg',
+//   'assets/images/profile_pics/13.jpeg',
+//   'assets/images/profile_pics/14.jpeg',
+//   'assets/images/profile_pics/15.jpeg',
+// ];
 
 class _HomePageState extends State<TestHomePage> {
-  late int iD;
-  late int nextID;
-  String description = '';
+  // Declare a list to hold the fetched users
+  List<UserModel> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers().then((fetchedUsers) {
+      setState(() {
+        users = fetchedUsers;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,50 +108,48 @@ class _HomePageState extends State<TestHomePage> {
                         child: Stack(children: [
                           Align(
                             alignment: Alignment.topCenter,
-                            child: Expanded(
-                              child: GridView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: imagePaths.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  crossAxisSpacing: 13,
-                                  mainAxisSpacing: 13,
-                                ),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        PageRouteBuilder(
-                                          pageBuilder: (context, animation1,
-                                                  animation2) =>
-                                              const UserPost(),
-                                          transitionDuration:
-                                              const Duration(milliseconds: 250),
-                                          transitionsBuilder: (context,
-                                              animation,
-                                              secondaryAnimation,
-                                              child) {
-                                            animation = CurvedAnimation(
-                                              parent: animation,
-                                              curve: Curves.bounceInOut,
-                                            );
-                                            return ScaleTransition(
-                                              scale: animation,
-                                              child: child,
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    },
-                                    child: CircleAvatar(
-                                      backgroundImage:
-                                          AssetImage(imagePaths[index]),
-                                    ),
-                                  );
-                                },
+                            child: GridView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: users.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 13,
+                                mainAxisSpacing: 13,
                               ),
+                              itemBuilder: (BuildContext context, int index) {
+                                UserModel user = users[index];
+
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                        pageBuilder:
+                                            (context, animation1, animation2) =>
+                                                const UserPost(),
+                                        transitionDuration:
+                                            const Duration(milliseconds: 250),
+                                        transitionsBuilder: (context, animation,
+                                            secondaryAnimation, child) {
+                                          animation = CurvedAnimation(
+                                            parent: animation,
+                                            curve: Curves.bounceInOut,
+                                          );
+                                          return ScaleTransition(
+                                            scale: animation,
+                                            child: child,
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(user.profileImageUrl),
+                                  ),
+                                );
+                              },
                             ),
                           )
                         ]),
