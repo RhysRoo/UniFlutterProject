@@ -152,26 +152,72 @@ class _SignupState extends State<Signup> {
           ElevatedButton(
             onPressed: (() async {
               try {
+                if (_usernameEntryFieldController.text.isEmpty ||
+                    _fNameEntryFieldController.text.isEmpty ||
+                    _lNameEntryFieldController.text.isEmpty ||
+                    _dayEntryFieldController.text.isEmpty ||
+                    _monthEntryFieldController.text.isEmpty ||
+                    _yearEntryFieldController.text.isEmpty ||
+                    _emailController.text.isEmpty ||
+                    _passwordController.text.isEmpty) {
+                  throw Exception('All fields must be filled');
+                }
+
                 int day = int.parse(_dayEntryFieldController.text);
                 int month = int.parse(_monthEntryFieldController.text);
                 int year = int.parse(_yearEntryFieldController.text);
 
                 if (day < 1 || day > 31) {
                   log('Day must be between 1 and 31');
+                  throw Exception('Day must be between 1 and 31');
                   // Handle error
-                  return;
                 }
 
                 if (month < 1 || month > 12) {
                   log('Month must be between 1 and 12');
                   // Handle error
-                  return;
+                  throw Exception('Month must be between 1 and 12');
                 }
 
                 if (year < 1000 || year > 9999) {
                   log('Year must be between 1000 and 9999');
                   // Handle error
-                  return;
+                  throw Exception('Year must be between 1000 and 9999');
+                }
+
+                String username = _usernameEntryFieldController.text;
+                if (username.length < 3 || username.length > 12) {
+                  log('username error');
+                  // Handle error
+                  throw Exception(
+                      'Username must be more than 3 characters long and less than 12 characters');
+                }
+
+                String email = _emailController.text;
+                if (!email.contains('@') ||
+                    (!email.endsWith('.com') && !email.endsWith('.co.uk'))) {
+                  log('email error');
+                  // Handle error
+                  throw Exception(
+                      'Email must contain "@" and end with either ".com" or ".co.uk"');
+                }
+
+                String password = _passwordController.text;
+                if (password.length < 13) {
+                  log('Password must be at least 13 characters long');
+                  // Handle error
+                  throw Exception(
+                      'Password must be at least 13 characters long');
+                }
+
+                String firstName = _fNameEntryFieldController.text;
+                String lastName = _lNameEntryFieldController.text;
+                if (firstName.contains(RegExp(r'[^\w\s]')) ||
+                    lastName.contains(RegExp(r'[^\w\s]'))) {
+                  log('First and last names must not contain special characters');
+                  // Handle error
+                  throw Exception(
+                      'First and last names must not contain special characters');
                 }
 
                 firestoreService.addUser(
@@ -204,8 +250,21 @@ class _SignupState extends State<Signup> {
 
                 Navigator.of(context).pop;
               } catch (e) {
-                log('An error occurred: $e');
-                // Handle error
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('An error occurred'),
+                    content: Text('$e'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
+                );
               }
             }),
             child: const Text('Register'),
