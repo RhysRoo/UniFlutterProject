@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/database/firestore.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -8,6 +13,30 @@ class Signup extends StatefulWidget {
   State<Signup> createState() => _SignupState();
 }
 //firestore
+
+Future<void> uploadUserImage(File imageFile, String userId) async {
+  try {
+    // Create a reference to the location you want to upload to in Firebase Storage
+    Reference storageReference = FirebaseStorage.instance
+        .ref()
+        .child('user_images/$userId/profile_picture');
+
+    // Upload the file to Firebase Storage
+    UploadTask uploadTask = storageReference.putFile(imageFile);
+
+    // Get the download URL
+    final TaskSnapshot downloadUrl = (await uploadTask);
+    final String url = (await downloadUrl.ref.getDownloadURL());
+
+    // Save the download URL to Firestore
+    await FirebaseFirestore.instance.collection('users').doc(userId).update({
+      'imageUrl': url,
+    });
+  } catch (e) {
+    print('An error occurred while uploading the image: $e');
+    // You can handle the error here, for example by showing a message to the user
+  }
+}
 
 final FirestoreService firestoreService = FirestoreService();
 
@@ -58,13 +87,20 @@ class _SignupState extends State<Signup> {
   // }
 
   void openUserDataBox() {
+    File _imageFile;
+
+    void log(String message) {
+      // In a real-world application, replace this with your logging framework
+      print(message);
+    }
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         content: Container(
           alignment: Alignment(0.0, 0.2),
           width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.45,
+          height: MediaQuery.of(context).size.height * 0.8,
           child: Column(
             children: [
               TextField(
@@ -99,13 +135,46 @@ class _SignupState extends State<Signup> {
                 controller: _passwordController,
                 decoration: InputDecoration(hintText: 'Password'),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  final pickedFile = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (pickedFile != null) {
+                    _imageFile = File(pickedFile.path);
+                  }
+                },
+                child: const Text('Pick Image'),
+              ),
             ],
           ),
         ),
         actions: [
           ElevatedButton(
-            onPressed: (() {
-              firestoreService.addUser(
+            onPressed: (() async {
+              try {
+                int day = int.parse(_dayEntryFieldController.text);
+                int month = int.parse(_monthEntryFieldController.text);
+                int year = int.parse(_yearEntryFieldController.text);
+
+                if (day < 1 || day > 31) {
+                  log('Day must be between 1 and 31');
+                  // Handle error
+                  return;
+                }
+
+                if (month < 1 || month > 12) {
+                  log('Month must be between 1 and 12');
+                  // Handle error
+                  return;
+                }
+
+                if (year < 1000 || year > 9999) {
+                  log('Year must be between 1000 and 9999');
+                  // Handle error
+                  return;
+                }
+
+                firestoreService.addUser(
                   _usernameEntryFieldController.text,
                   _fNameEntryFieldController.text,
                   _lNameEntryFieldController.text,
@@ -113,18 +182,31 @@ class _SignupState extends State<Signup> {
                   int.parse(_monthEntryFieldController.text),
                   int.parse(_yearEntryFieldController.text),
                   _emailController.text,
-                  _passwordController.text);
+                  _passwordController.text,
+                );
 
-              _usernameEntryFieldController.clear();
-              _fNameEntryFieldController.clear();
-              _lNameEntryFieldController.clear();
-              _dayEntryFieldController.clear();
-              _monthEntryFieldController.clear();
-              _yearEntryFieldController.clear();
-              _emailController.clear();
-              _passwordController.clear();
+                final pickedFile =
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                if (pickedFile != null) {
+                  final File imageFile = File(pickedFile.path);
+                  await uploadUserImage(
+                      imageFile, _usernameEntryFieldController.text);
+                }
 
-              Navigator.pop(context);
+                _usernameEntryFieldController.clear();
+                _fNameEntryFieldController.clear();
+                _lNameEntryFieldController.clear();
+                _dayEntryFieldController.clear();
+                _monthEntryFieldController.clear();
+                _yearEntryFieldController.clear();
+                _emailController.clear();
+                _passwordController.clear();
+
+                Navigator.of(context).pop;
+              } catch (e) {
+                log('An error occurred: $e');
+                // Handle error
+              }
             }),
             child: const Text('Register'),
           ),
