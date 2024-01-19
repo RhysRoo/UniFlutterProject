@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/database/firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:untitled1/pages/user_settings.dart';
+import 'login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -12,7 +15,14 @@ class Signup extends StatefulWidget {
   @override
   State<Signup> createState() => _SignupState();
 }
+
 //firestore
+void LoginButtonHandler(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Login()),
+  );
+}
 
 Future<void> uploadUserImage(File imageFile, String userId) async {
   try {
@@ -152,6 +162,10 @@ class _SignupState extends State<Signup> {
           ElevatedButton(
             onPressed: (() async {
               try {
+                int day = int.parse(_dayEntryFieldController.text);
+                int month = int.parse(_monthEntryFieldController.text);
+                int year = int.parse(_yearEntryFieldController.text);
+
                 if (_usernameEntryFieldController.text.isEmpty ||
                     _fNameEntryFieldController.text.isEmpty ||
                     _lNameEntryFieldController.text.isEmpty ||
@@ -163,14 +177,10 @@ class _SignupState extends State<Signup> {
                   throw Exception('All fields must be filled');
                 }
 
-                int day = int.parse(_dayEntryFieldController.text);
-                int month = int.parse(_monthEntryFieldController.text);
-                int year = int.parse(_yearEntryFieldController.text);
-
                 if (day < 1 || day > 31) {
                   log('Day must be between 1 and 31');
-                  throw Exception('Day must be between 1 and 31');
                   // Handle error
+                  throw Exception('Day must be between 1 and 31');
                 }
 
                 if (month < 1 || month > 12) {
@@ -218,6 +228,23 @@ class _SignupState extends State<Signup> {
                   // Handle error
                   throw Exception(
                       'First and last names must not contain special characters');
+                }
+
+                UserCredential userCredential =
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+
+                User? user = userCredential.user;
+
+                if (user != null) {
+                  final pickedFile = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (pickedFile != null) {
+                    _imageFile = File(pickedFile.path);
+                    await uploadUserImage(_imageFile, user.uid);
+                  }
                 }
 
                 firestoreService.addUser(
@@ -282,6 +309,12 @@ class _SignupState extends State<Signup> {
       body: Center(
         child: Stack(
           children: [
+            Align(
+              alignment: Alignment(0.0, 0.6),
+              child: BackButton(
+                onPressed: () => logInButtonHandler(context),
+              ),
+            ),
             const Align(
               alignment: Alignment(0.0, -0.85),
               child: Text(
