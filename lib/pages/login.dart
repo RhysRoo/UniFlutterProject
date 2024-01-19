@@ -6,7 +6,7 @@ import 'signup.dart';
 void SignupButtonHandler(BuildContext context) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => Signup()),
+    MaterialPageRoute(builder: (context) => const Signup()),
   );
 }
 
@@ -111,7 +111,7 @@ class Login extends StatelessWidget {
                   onPressed: (() {
                     SignupButtonHandler(context);
                   }),
-                  child: Text('Sign up')),
+                  child: const Text('Sign up')),
             )
           ],
         ),
